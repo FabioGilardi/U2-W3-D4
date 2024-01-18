@@ -3,6 +3,9 @@ const myApiKey = "s69U3jz9uvFnPhthPRZ1s1vQb2OHJ1IpfgHqSMZXoTc8g8Pv1CCwxhZJ";
 const loadPButton = document.getElementById("load");
 const loadSButton = document.getElementById("load-2");
 const cardsImageArray = Array.from(document.querySelectorAll(".card img"));
+const cardsViewButton = Array.from(
+  document.querySelectorAll(".card button:nth-of-type(1)")
+);
 const cardsHideButton = Array.from(
   document.querySelectorAll(".card button:nth-of-type(2)")
 );
@@ -15,8 +18,6 @@ const cardTitlesArray = Array.from(
 
 const imgLinks = Array.from(document.getElementsByClassName("img-link"));
 const titleLinks = Array.from(document.getElementsByClassName("title-link"));
-
-console.log(imgLinks);
 
 // FUNCTIONS
 

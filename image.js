@@ -3,6 +3,7 @@ const addressBarContent = new URLSearchParams(location.search);
 const imageId = parseInt(addressBarContent.get("imageId").split(".")[1]);
 const imageAdd = addressBarContent.get("imageId").split(".")[0];
 const row = document.getElementsByClassName("row")[1];
+const main = document.getElementsByTagName("main")[0];
 console.log(imageAdd);
 
 const createImg = function () {
@@ -41,6 +42,7 @@ const createImg = function () {
     </div>
     </div>`;
       row.appendChild(newCol);
+      main.style.backgroundColor = image.photos[imageId].avg_color;
     })
     .catch((err) => {
       console.log(err);
