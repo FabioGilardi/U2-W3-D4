@@ -28,7 +28,7 @@ const createImg = function () {
     <img
       src="${image.photos[imageId].src.original}"
       class="bd-placeholder-img card-img-top"
-      style = "height: 350px"
+      style = "height: 480px !important;"
     />
     <div class="card-body">
       <h5 class="card-title">${image.photos[imageId].photographer}</h5>
