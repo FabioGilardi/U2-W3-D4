@@ -43,14 +43,8 @@ const loadPrimaryImages = function () {
           `${images.photos[i].src.original}`
         );
 
-        imgLinks[i].setAttribute(
-          "href",
-          `./image.html?imageId=${images.photos[i].id}`
-        );
-        titleLinks[i].setAttribute(
-          "href",
-          `./image.html?imageId=${images.photos[i].id}`
-        );
+        imgLinks[i].setAttribute("href", `./image.html?imageId=${i}`);
+        titleLinks[i].setAttribute("href", `./image.html?imageId=${i}`);
         cardTitlesArray[i].innerText = images.photos[i].alt;
         smallText[i].innerText = images.photos[i].id;
       }
