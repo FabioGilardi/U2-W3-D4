@@ -43,8 +43,11 @@ const loadPrimaryImages = function () {
           `${images.photos[i].src.original}`
         );
 
-        imgLinks[i].setAttribute("href", `./image.html?imageId=${i}`);
-        titleLinks[i].setAttribute("href", `./image.html?imageId=${i}`);
+        imgLinks[i].setAttribute("href", `./image.html?imageId=[dragons].${i}`);
+        titleLinks[i].setAttribute(
+          "href",
+          `./image.html?imageId=[dragons].${i}`
+        );
         cardTitlesArray[i].innerText = images.photos[i].alt;
         smallText[i].innerText = images.photos[i].id;
       }
@@ -75,6 +78,15 @@ const loadSecondaryImages = function () {
         cardsImageArray[i].setAttribute(
           "src",
           `${images.photos[i].src.original}`
+        );
+
+        imgLinks[i].setAttribute(
+          "href",
+          `./image.html?imageId=[supercar].${i}`
+        );
+        titleLinks[i].setAttribute(
+          "href",
+          `./image.html?imageId=[supercar].${i}`
         );
         cardTitlesArray[i].innerText = images.photos[i].alt;
         smallText[i].innerText = images.photos[i].id;
@@ -120,15 +132,22 @@ const loadCustomImages = function (e) {
           "src",
           `${images.photos[i].src.original}`
         );
+        imgLinks[i].setAttribute(
+          "href",
+          `./image.html?imageId=[${imgFinder.value}].${i}`
+        );
+        titleLinks[i].setAttribute(
+          "href",
+          `./image.html?imageId=[${imgFinder.value}].${i}`
+        );
         cardTitlesArray[i].innerText = images.photos[i].alt;
         smallText[i].innerText = images.photos[i].id;
       }
+      imgFinder.value = "";
     })
     .catch((err) => {
       console.log(err);
     });
-
-  imgFinder.value = "";
 };
 
 // ON-GOING

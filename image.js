@@ -1,27 +1,50 @@
 const myApiKey = "s69U3jz9uvFnPhthPRZ1s1vQb2OHJ1IpfgHqSMZXoTc8g8Pv1CCwxhZJ";
 const addressBarContent = new URLSearchParams(location.search);
-const imageId = addressBarContent.get("imageId");
-const row = document.getElementsByClassName("row")[0];
-console.log(imageId);
+const imageId = parseInt(addressBarContent.get("imageId").split(".")[1]);
+const imageAdd = addressBarContent.get("imageId").split(".")[0];
+const row = document.getElementsByClassName("row")[1];
+console.log(imageAdd);
 
-fetch(`https://api.pexels.com/v1/search?query=[dragons]/${imageId}`, {
-  method: "GET",
-  headers: {
-    Authorization: myApiKey,
-  },
-})
-  .then((response) => {
-    if (response.ok) {
-      return response.json();
-    } else {
-      throw new Error("Something went wrong...");
-    }
+const createImg = function () {
+  fetch(`https://api.pexels.com/v1/search?query=${imageAdd}`, {
+    method: "GET",
+    headers: {
+      Authorization: myApiKey,
+    },
   })
-  .then((image) => {
-    const newCol = document.createElement("div");
-    newCol.classList.add("col-12");
-    newCol.classList.add("col-md-8");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Something went wrong...");
+      }
+    })
+    .then((image) => {
+      console.log(image);
+      const newCol = document.createElement("div");
+      newCol.classList.add("col-12");
+      newCol.classList.add("col-md-10");
+      newCol.innerHTML = `            <div class="card my-4 shadow-sm">
+    <img
+      src="${image.photos[imageId].src.original}"
+      class="bd-placeholder-img card-img-top"
+      style = "height: 350px"
+    />
+    <div class="card-body">
+      <h5 class="card-title">${image.photos[imageId].photographer}</h5>
+      <a class="text-decoration-none" href="${image.photos[imageId].photographer_url}" target="_blank"
+        ><p class="card-text">
+        Photograper link
+        </p></a
+      >
+      <a href="./pexels-start.html" class="text-decoration-none"><p class="mt-3 mb-0">Go back Home</p></a>
+    </div>
+    </div>`;
+      row.appendChild(newCol);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+createImg();
