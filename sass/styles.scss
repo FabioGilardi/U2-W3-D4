@@ -1,0 +1,9 @@
+@import "./bootstrap-override";
+
+main {
+  .card {
+    img {
+      height: 250px !important;
+    }
+  }
+}
